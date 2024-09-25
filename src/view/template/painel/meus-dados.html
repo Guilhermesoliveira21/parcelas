@@ -1,0 +1,59 @@
+<section class="container text-center mt-4">
+    <div class="row align-items-start">
+        <div class="meus_dados_title">
+            <h3>Meus dados</h3>
+        </div>
+      <div class="col">
+        <h5 class="text-start">Dados pessoais</h5>
+
+        <div>
+            <form method="post" id="send_form_meus_dados">
+                <div class="row text-start">
+                    <div class="col-12">
+                        <label class="form-label">Nome</label>
+                        <input type="text" name="nome" class="form-control mb-4" value="<?= $userSession['nome']?>" placeholder="Nome">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Data de Nascimento</label>
+                        <input type="email" name="data_nasc" class="form-control mb-4" value="<?= $userSession['data_nasc']?>" placeholder="Data de nascimento">  
+                    </div>  
+                    <div class="col-12">
+                        <label class="form-label">Telefone</label>
+                        <input type="text" name="telefone" class="form-control mb-4" value="<?= $userSession['telefone']?>" placeholder="Telefone">  
+                    </div> 
+                    <div class="col-12">
+                        <label class="form-label">CPF</label>
+                        <input type="text" name="cpf" class="form-control mb-4" disabled value="<?= substr($userSession['cpf'], 0, 3) . str_repeat('*', strlen($userSession['cpf']) - 3)?>" placeholder="CPF">  
+                        <input type="hidden" name="conteudo" value="edit_form_meus_dados">
+                    </div> 
+                    <div class="mt-4 mb-4 col-12">
+                        <button class="btn btn-primary w-100">Salvar</button>
+                    </div>    
+                </div>
+            </form>
+        </div>
+
+      </div>
+      <div class="col">
+        <h5 class="text-start">Dados de acesso</h5>
+
+        <div>
+            <form method="post" id="send_form_meus_dados">
+                <div class="row text-start">
+                    <div class="col-12">
+                        <label class="form-label">E-mail</label>
+                        <input type="text" name="email" class="form-control mb-4" disabled value="<?= $userSession['email']?>" placeholder="email">
+                    </div>
+                   
+                    <div class=" col-6">
+                        <button class="btn btn-primary w-100">Alterar E-mail</button>
+                    </div>    
+                    <div class=" col-6">
+                        <button class="btn btn-primary w-100">Alterar Senha</button>
+                    </div>  
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </section>

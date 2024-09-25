@@ -1,0 +1,57 @@
+<section class="container register_container">
+    <div class="container register_container_form">
+        <div class="register_cadastrar">
+          <form method="post" class="register_form" id="send_form_register">
+
+            <div class="mb-4 text-center">
+                <h4>Cadastre-se</h4>
+                <p>Preencha os campos abaixo para fazer cadastro:</p>
+            </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-label">Nome</label>
+                        <input type="text" name="nome" class="form-control mb-2" placeholder="Digite seu nome">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">E-mail</label>
+                        <input type="text" name="email" class="form-control mb-2" placeholder="Email">
+                    </div>      
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-label">Telefone</label>
+                        <input type="text" name="telefone" class="form-control mb-2" placeholder="telefone">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">CPF</label>
+                        <input type="text" name="cpf" class="form-control mb-2" placeholder="CPF">
+                    </div>   
+                    <div class="col-12">
+                        <label class="form-label">Data Nasc.</label>
+                        <input type="date" name="data_nasc" class="form-control mb-2">
+                    </div>    
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-label">Senha</label>
+                        <input type="password" name="senha" class="form-control mb-2" placeholder="******">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Confirma senha</label>
+                        <input type="password" name="confirm_senha" class="form-control mb-2" placeholder="******">
+                        <input type="hidden" name="conteudo" value="register_user">
+                    </div>      
+                    <div class="mt-4 col-12">
+                        <button class="btn btn-primary w-100">Cadastrar</button>
+                    </div>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <p>Já tem uma conta? <a href="/login">Entrar</a></p>
+                </div>
+          </form>
+        </div>
+      </div>
+</section>

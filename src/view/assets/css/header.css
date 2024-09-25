@@ -1,0 +1,129 @@
+.header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    background-color: #F7F7F7;
+    padding: .8rem 12rem;
+}
+
+.header_logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header_logo > a {
+    text-decoration: none;
+    margin-top: 4px;
+}
+
+.header_logo > a > h4 > span {
+    color: red;
+}
+
+.header_search_product {
+    width: 30rem;
+    display: flex;a;
+    position: relative;
+}
+
+.header_search_product > input {
+    padding: .4rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+    outline: 0;
+}
+
+.icon_search {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 16px;
+    top: 6px;
+}
+
+.icon_search > i {
+    color: #7c7c7c;
+}
+
+.header_operacoes {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.header_register_enter {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+.header_icon_user > a > i {
+    font-size: 2rem;
+}
+
+.header_link {
+    text-decoration: none;
+    line-height: 1rem;
+    margin-top: 8px;
+}
+
+.header_link > span {
+    color: #636363;
+    font-weight: 500;
+}
+
+.header_link > p {
+    color: #636363;
+}
+
+.header_compra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header_compra > a > i {
+    font-size: 1.6rem;
+}
+
+.header_menu_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0033C6;
+    padding: .4rem 12rem;
+}
+
+.header_menu_links {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+    padding: .4rem 0;
+    gap: 3rem;
+}
+
+.header_menu_link {
+    color: #f2f2f2;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+}
+
+.header_menu_link::after {
+    content: '';
+    position: absolute;
+    background-color: #f2f2f2;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    transition: .2s;
+}
+
+.header_menu_link:hover::after {
+    width: 100%;
+}

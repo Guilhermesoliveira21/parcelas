@@ -1,0 +1,154 @@
+<div class="container mt-4">  
+    <div class="row">
+      <div class="col-8">
+
+        <div class="header_search_product w-100">
+            <input placeholder="Procurar meu produto" type="text" class="form-control">
+            <div class="icon_search">
+                <i class="bi bi-search"></i>
+            </div>
+        </div>
+
+      </div>
+      <div class="col-4">
+            
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Cadastrar produto
+  </button>
+  
+  
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastro</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="send_form_product_create" method="post" enctype="multipart/form-data" name="form_product_create">
+                    
+
+                        <h5>Produto</h5>
+                        <div class="form-group">
+                            <label>Nome do produto</label>
+                            <input type="text" class="form-control" name="produto" placeholder="Digite produto" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Preço</label>
+                            <input type="text" class="form-control" name="preco" placeholder="R$ 99,99" required>
+                        </div>
+                        <input type="hidden" name="conteudo" value="create_product">
+                        <div class="mb-3">
+                            <label class="form-label">Descrição</label>
+                            <textarea class="form-control" name="descricao" placeholder="Descrição" rows="3"></textarea>
+                          </div>
+                       
+     
+                        <h5>Imagens</h5>
+                        <div>
+                            <label for="formFileLg" class="form-label">Escolha imagens</label>
+                            <input class="form-control form-control" name="imagem" id="formFileLg" type="file">
+                          </div>
+
+                          <div class="mb-4">
+                            <label class="installments-label" for="installments">Escolha uma categoria:</label>
+                            <select name="categoria" id="installments" class="form-control">
+                                <option value="lancamento">Lançamento</option>
+                                <option value="celulares">Celulares</option>
+                                <option value="computadores">Computadores</option>
+                                <option value="video-game">Video Game</option>
+                                <option value="televisao">TV</option>
+                            </select>
+                        </div>
+                       
+                        <button  class="btn btn-primary mt-3">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product-container card_prod_p mt-4">
+    <?php if(count($response) == 0):?>
+        <h3 class='mt-5'>Nenhum produto encontrado</h3>
+    <?php else:?>
+        <?php foreach($response as $product):?>
+        <div class="product-card">
+            <img src="<?=PATH. $product['image']?>" alt="${prod.nome}" class="product-image">
+            <div class="product-info">
+                <h3 class="product-title"><?= $product['nome']?></h3>
+                <p class="product-description"><?= $product['descricao']?></p>
+                <p class="product-price">R$ <?= $product['preco']?></p>
+                <button class="buy-button">Ver mais</button>
+            </div>
+        </div>
+    <?php endforeach?>
+    <?php endif?>
+</div>
+
+</div>
+    </div>
+  </div>
+
+  <style>
+    .product-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px; /* Espaçamento entre os cards */
+    }
+    
+    .product-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 300px;
+        transition: transform 0.2s;
+    }
+    
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .product-image {
+        width: 100%;
+        height: auto;
+    }
+    
+    .product-info {
+        padding: 15px;
+    }
+    
+    .product-title {
+        font-size: 1.5em;
+        margin: 0;
+    }
+    
+    .product-description {
+        color: #555;
+        margin: 10px 0;
+    }
+    
+    .product-price {
+        font-size: 1.2em;
+        color: #e63946;
+        margin: 10px 0;
+    }
+    
+    .buy-button {
+        background-color: #1d3557;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .buy-button:hover {
+        background-color: #457b9d;
+    }
+    
+    </style>

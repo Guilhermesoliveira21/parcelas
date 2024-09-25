@@ -1,0 +1,153 @@
+<div class="container mt-5">
+    <h1 class="text-start mb-5">Carrinho de Compras</h1>
+    
+    <div class="row">
+        <div class="col-md-7">
+            <div class="cart-items mb-4">
+                <?php if(count($cardProduct) == 0):?>
+                    <h4>Carrinho vazio</h4>
+                <?php else:?>
+                    <?php 
+                        $price = [];
+                        $products = [];
+                        foreach($cardProduct as $card):?>
+                            <div class="cart-item d-flex justify-content-between align-items-center border-bottom py-3">
+                            
+                                <div class="item-details flex-grow-1">
+                                    <h2><?= $card['nome']?></h2>
+                                    <p class="price">Preço: R$ <?= number_format($card['preco'], 2, ',', '.') ?></p>
+                                    <p><?= $card['descricao']?></p>
+                                    <form id="send_form_delete_product" method="post">
+                                        <input type="hidden" name="conteudo" value="delete_product">
+                                        <input type="hidden" name="product_id" class="product-id" value="<?= $card['id_card'] ?>"> <!-- Campo oculto para o ID -->
+                                        <button type="submit" class="btn btn-danger btn-sm delete-button" id="<?= $card['id_card'] ?>">Remover</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <?php
+                        $price[] = $card['preco'];
+                        $products[] = $card['product_id'];
+                        $productId = implode(',', $products);
+                        $preco = implode(',', $price);
+                        endforeach;
+                        $total = array_sum($price);
+                        ?>
+                <?php endif?>
+            </div>
+
+            <div class="summary mb-4">
+                <h2>Resumo da Compra</h2>
+                <p><span class="total-price">Total: R$ <?= count($cardProduct) == 0 ? '0.00' :  number_format($total, 2, ',', '.')?></span></p>
+            </div>
+        </div>
+
+        <form method="post" class="col-md-4 summary" id="send_form_card_pay">
+            <div class="payment-methods mb-4">
+                <h2>Formas de Pagamento</h2>
+                <div class="payment-option">
+                    <input type="radio" id="credit-card" name="payment" value="Cartão de Crédito">
+                    <label for="credit-card">Cartão de Crédito</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="debit-card" name="payment" value="Cartão de Débito">
+                    <label for="debit-card">Cartão de Débito</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="boleto" name="payment" value="Boleto Bancário">
+                    <input type="hidden" name="conteudo" value="finalizar_compra">
+                    <label for="boleto">Boleto Bancário</label>
+                    <input type="hidden" name="products_pays" value="<?= $productId ?>">
+                    <input type="hidden" name="total_price" value="<?= $preco?>"> 
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h2>Parcelamento</h2>
+                <label class="installments-label" for="installments">Escolha o número de parcelas:</label>
+                <select name="parcela" id="installments" class="form-control">
+                
+
+                    <?php if(count($cardProduct) > 0):?>
+                        <option value="1 <?= number_format($total / 1, 2, ',', '.') ?>">1x de R$ <?= number_format($total / 1, 2, ',', '.') ?></option>
+                            <option value="2 <?= number_format($total / 2, 2, ',', '.') ?>">2x de R$ <?= number_format($total / 2, 2, ',', '.') ?></option>
+                            <option value="3 <?= number_format($total / 3, 2, ',', '.') ?>">3x de R$ <?= number_format($total / 3, 2, ',', '.') ?></option>
+                            <option value="4 <?= number_format($total / 4, 2, ',', '.') ?>">4x de R$ <?= number_format($total / 4, 2, ',', '.') ?></option>
+                            <option value="5 <?= number_format($total / 5, 2, ',', '.') ?>">5x de R$ <?= number_format($total / 5, 2, ',', '.') ?></option>
+                            <option value="6 <?= number_format($total / 6, 2, ',', '.') ?>">6x de R$ <?= number_format($total / 6, 2, ',', '.') ?></option>
+                            <option value="7 <?= number_format($total / 7, 2, ',', '.') ?>">7x de R$ <?= number_format($total / 7, 2, ',', '.') ?></option>
+                            <option value="8 <?= number_format($total / 8, 2, ',', '.') ?>">8x de R$ <?= number_format($total / 8, 2, ',', '.') ?></option>
+                            <option value="9 <?= number_format($total / 9, 2, ',', '.') ?>">9x de R$ <?= number_format($total / 9, 2, ',', '.') ?></option>
+                            <option value="10 <?= number_format($total / 10, 2, ',', '.') ?>">10x de R$ <?= number_format($total / 10, 2, ',', '.') ?></option>
+                            <option value="11 <?= number_format($total / 11, 2, ',', '.') ?>">11x de R$ <?= number_format($total / 11, 2, ',', '.') ?></option>
+                            <option value="12 <?= number_format($total / 12, 2, ',', '.') ?>">12x de R$ <?= number_format($total / 12, 2, ',', '.') ?></option>
+                    <?php else:?>
+                        <option value="1 ">1x de R$ 0.00</option>
+                    <?php endif?>
+                </select>
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block">Finalizar Compra</button>
+        </form>
+    </div>
+</div>
+
+<style>
+     .container_pay {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            padding: 15px 0;
+        }
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+        }
+        .item-details h2 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .item-details p {
+            margin: 5px 0;
+        }
+        .item-details .price {
+            font-weight: bold;
+            font-size: 16px;
+            color: #28a745;
+        }
+        .btn-danger {
+            margin-left: 10px;
+        }
+        .summary {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .payment-methods {
+            margin-bottom: 20px;
+        }
+        .payment-option {
+            margin: 10px 0;
+        }
+        .installments-label {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .total-price {
+            font-weight: bold;
+            font-size: 24px;
+            color: #dc3545; /* Cor de destaque para o total */
+        }
+        .payment-option input {
+            margin-right: 10px;
+        }
+        .payment-option label {
+            font-weight: 500;
+        }
+</style>

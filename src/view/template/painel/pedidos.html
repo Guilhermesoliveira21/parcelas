@@ -1,0 +1,64 @@
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .order-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .order-card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .order-card p {
+            margin: 5px 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 18px;
+        }
+        .btn-danger {
+            margin-right: 10px;
+        }
+        .btn-secondary {
+            margin-left: 10px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            padding: 10px;
+            font-size: 22px;
+        }
+    </style>
+
+
+<div class="container">
+    <div class="card order-card">
+        <div class="card-header">Minhas Compras Realizadas</div>
+        <div class="card-body">
+            <?php foreach($res as $pedido):?>
+            <div class="order-item mb-4">
+                <h2>Pedido #<?= $pedido['pedido']?></h2>
+                <p>Data: 01/01/2023</p>
+                <p>Pagamento:<?= $pedido['metodo_pagamento']?></p>
+                <p>Parcelas: 1/<?= $pedido['parcela']?></p>
+                <p class="price">Total: R$ <?= $pedido['valor']?></p>
+                <a href="http://localhost:8000/pdf.php?nome=<?= urlencode($userSession['nome']) ?>&email=<?= urlencode($userSession['email']) ?>&telefone=<?= urlencode($userSession['telefone']) ?>&pedido=<?= urlencode($pedido['pedido']) ?>&parcela=<?= urlencode($pedido['parcela']) ?>&pagamento=<?= urlencode($pedido['metodo_pagamento']) ?>&valor=<?= urlencode($pedido['valor']) ?>" class="btn btn-secondary btn-sm">Gerar PDF</a>
+
+            </div>
+            <?php endforeach?>
+           
+        </div>
+    </div>
+</div>
+
+

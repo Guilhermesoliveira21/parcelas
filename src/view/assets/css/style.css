@@ -1,0 +1,72 @@
+.notificacao {
+    background-color: aqua;
+    width: 100%;
+    position: relative;
+
+}
+
+.noty {
+    background-color: rgb(228, 46, 46);
+    width: 40%;
+    position: fixed;
+    content: '';
+    right: 0;
+    bottom: 30px;
+    color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.n_erro {
+    color: #f2f2f2;
+    background-color: rgb(228, 46, 46);
+}
+
+.notifications-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+.notification {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    padding: 15px;
+    animation: slideIn 0.5s forwards;
+}
+
+.notification.success {
+    border-left: 4px solid #28a745;
+}
+
+.notification.error {
+    border-left: 4px solid #dc3545;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -10px; 
+    background-color: red;
+    color: white;
+    border-radius: 50%; 
+    padding: 5px 10px; 
+    font-size: 12px; 
+    line-height: 1; 
+}
+

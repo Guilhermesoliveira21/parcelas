@@ -1,0 +1,20 @@
+<section class="container mt-4">
+    <?php if(isset($_GET['sub_page'])):?>
+    <h5 class="mb-5">Categoria <?= $_GET['sub_page']?></h5>
+    <?php endif?>
+    <div class="row">
+        <?php foreach ($response as $product): ?>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img style="height: 380px;" src="<?= PATH . $product['image']?>" class="card-img-top" alt="<?= $product['nome'] ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $product['nome'] ?></h5>
+                        <p style="height: 100px;" class="card-text"><?= $product['descricao'] ?></p>
+                        <p class="card-text"><strong>R$ <?= number_format($product['preco'], 2, ',', '.') ?></strong></p>
+                        <a href="/produto/<?= ($product['id']) ?>" class="btn btn-primary">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>

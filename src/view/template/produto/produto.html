@@ -1,0 +1,72 @@
+<style>
+    body {
+        background-color: #e9ecef;
+        font-family: 'Arial', sans-serif;
+    }
+    .product-image {
+        max-width: 100%;
+        height: auto;
+
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    .product-card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+    }
+    .product-card:hover {
+        transform: scale(1.02);
+    }
+    h2 {
+        color: #dc3545;
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    h4, h5 {
+        color: #333;
+    }
+    button {
+        background-color: #dc3545;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+ 
+    .payment-methods img {
+        width: 60px;
+        margin: 10px;
+    }
+    .section-title {
+        margin-top: 30px;
+        font-size: 1.5em;
+        color: #333;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="container mt-5">
+<div class="row">
+    <div class="col-md-6">
+        <img src="<?= PATH . $product['image']?>" alt="Imagem do Produto" class="product-image">
+    </div>
+    <div class="col-md-6 product-card">
+        <h2><?= $product['nome']?></h2>
+        <p style="height: 200px;"><?= $product['descricao']?></p>
+        <h4>Preço: R$ <?= number_format($product['preco'], 2, ',', '.') ?></h4>
+        <h5>Parcelamento: em até 12x de R$ <?=number_format($product['preco'] / 12, 2, ',', '.') ?> sem juros</h5>
+        <form method="post" id="add_product_card">
+            <input type="hidden" name="product" value="<?= $product['id']?>">
+            <input class="mb-5" type="hidden" name="conteudo" value="add_product_card">
+            <button id="add_product_card" data-product="<?= $product['id']?>" class="btn btn-lg btn-primary mt-5">Adicionar ao Carrinho</button>
+        </form>
+    </div>
+</div>
+
+</div>

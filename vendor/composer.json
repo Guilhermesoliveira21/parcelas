@@ -1,0 +1,18 @@
+{
+    "name": "src/product",
+    "autoload": {
+        "psr-4": {
+            "Src\\Product\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Guilhermesoliveira21",
+            "email": "gs6502372@gmail.com"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "*",
+        "setasign/fpdf": "^1.8"
+    }
+}

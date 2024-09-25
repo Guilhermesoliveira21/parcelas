@@ -1,0 +1,27 @@
+.register_container {
+
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.register_container_form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.register_cadastrar {
+    width: 50%;
+}
+
+.register_form {
+    width: 100%;
+    background-color: aliceblue;
+    padding: 4rem 2rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px #0000002c;
+}

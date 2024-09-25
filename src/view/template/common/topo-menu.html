@@ -1,0 +1,106 @@
+<header class="header_container ">
+
+    <div class="header_logo">
+        <a href="/">
+            <h4>Produto <span>++</span></h4>
+        </a>
+    </div>
+
+    <div class="header_search_product">
+        <input type="text" name="search_product" placeholder="Pesquisar produto...">
+        <div class="icon_search">
+            <i class="bi bi-search"></i>
+        </div>
+    </div>
+
+    <div class="header_operacoes">
+        <?php if(!isset($_SESSION['info_user'])):?>
+        <div class="header_register_enter">
+            <div class="header_icon_user">
+                <a href="/register">
+                    <i class="bi bi-people-fill"></i>
+                </a>
+            </div>
+            <a href="/register" class="header_link">
+                <span>Entre ou cadastra-se</span>
+                <p>para ver seus pedidos</p>
+            </a>
+        </div>
+        <?php else:?>
+            <div class="header_register_enter">
+            <div class="header_icon_user">
+                <a href="/register">
+                    <i class="bi bi-people-fill"></i>
+                </a>
+            </div>
+            <a href="/register" class="header_link">
+                <span>Ola, <?= explode(' ',$_SESSION['info_user']['nome'])[0]?></span>
+            </a>
+        </div>
+        <?php endif?>
+        <div class="header_compra" style="position: relative;">
+            <a href="/card">
+                <i class="bi bi-cart-fill"></i>
+                <?php if(isset($cardProduct) && count($cardProduct) > 0):?>
+                <span class="badge" id="product-count"><?= count($cardProduct) ?></span>
+                <?php endif?>
+            </a>
+        </div>
+        <?php if(isset($_SESSION['info_user'])):?>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon">
+            
+                <i style="font-size: 1.6rem;font-weight: 600;" class="bi bi-list"></i>
+             </span>
+            </button>
+            
+        <?php endif?>
+    </div>
+
+</header>
+
+<header class="header_menu_container">
+    <nav>
+        <ul class="header_menu_links" >
+            <li><a class="header_menu_link" href="/categoria/lancamento">Lançamentos</a></li>
+            <li><a class="header_menu_link" href="/categoria/celulares">Celulares</a></li>
+            <li><a class="header_menu_link" href="/categoria/computadores">Computadores</a></li>
+            <li><a class="header_menu_link" href="/categoria/video-game">Video Games</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+<nav class=""></nav>
+    <div class="container-fluid">
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Painel da conta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/painel/meus-dados">Meus dados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/painel/pedidos">Meus pedidos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/painel/produtos-cadastrados">Produtos cadastrados</a>
+                    </li>
+
+            
+
+
+                </ul>
+
+            </div>
+            <div style="padding: 0 1rem;">
+                <button id="sair_sistema" class="btn btn-danger w-50 mb-4 justify-content-center d-flex">Sair</button>
+            </div>
+        </div>
+    </div>
+</nav>
